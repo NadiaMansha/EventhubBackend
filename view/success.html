@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stripe</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        .success-message {
+            color: green;
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .ticket {
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 20px;
+            text-align: left;
+            max-width: 80%;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #ticketImage {
+            max-width: 100%;
+            border: 1px solid #000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #downloadButton {
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="success-message">Payment</h1>
+    <p>Your payment is successful</p>
+    <div class="ticket">
+        <img id="ticketImage" src="">
+        <button id="downloadButton">Download</button>
+    </div>
+
+    <script>
+        async function generateTicketImage() {
+            const ticket ={
+                title: "General",
+                event: "60f9b0b3e1b3c00f1c0b0b1e",
+                seats: 2,
+                price: 20,
+                eventAddress: "No 1, Jalan 1, Taman 1",
+                paymetDate: Date.now(),
+                paymentStatus: "Paid",
+                paymentMethod: "fpx",
+            }
+
+            const canvas = document.createElement("canvas");
+            canvas.width = 400;
+            canvas.height = 200;
+            const context = canvas.getContext("2d");
+
+            context.fillStyle = "#FFFFFF";
+            context.fillRect(0, 0, canvas.width, canvas.height);
+
+            context.fillStyle = "#000000";
+            context.font = "16px Arial";
+            context.fillText("Title: " + ticket.title, 10, 30);
+            context.fillText("Event: " + ticket.event, 10, 50);
+            context.fillText("Seats: " + ticket.seats, 10, 70);
+            context.fillText("Price: " + ticket.price, 10, 90);
+            context.fillText("Event Address: " + ticket.eventAddress, 10, 110);
+
+            const imageDataURL = canvas.toDataURL();
+            const ticketImage = document.getElementById("ticketImage");
+            ticketImage.src = imageDataURL;
+
+            const downloadButton = document.getElementById("downloadButton");
+            downloadButton.addEventListener("click", () => {
+                const a = document.createElement("a");
+                a.href = imageDataURL;
+                a.download = "ticket.png";
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", generateTicketImage);
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+{
+  "name": "youth_rice_backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+ 
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sheikh12345/youth_rice_backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sheikh12345/youth_rice_backend/issues"
+  },
+  "homepage": "https://github.com/Sheikh12345/youth_rice_backend#readme",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.321.1",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "date-fns": "^2.30.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.17.3",
+    "fcm-node": "^1.6.1",
+    "firebase-admin": "^11.8.0",
+    "google-auth-library": "^8.7.0",
+    "handlebars": "^4.7.7",
+    "jsonwebtoken": "^9.0.0",
+    "moment": "^2.29.4",
+    "mongodb": "^5.6.0",
+    "mongoose": "^7.0.3",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.1",
+    "stripe": "^12.1.1",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
